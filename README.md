@@ -42,16 +42,17 @@
 | 4 시험지 채점 | 바꿔 말함 recall@5: 키워드 1회 0/10 → 임베딩 1회 6/10 | AI 가 검색어를 바꿔 가며 찾는 방식(9/10)이 여전히 최고 |
 | 5 섞어 찾기(RRF) | 바꿔 말함 recall@5 6 → 4 | 한쪽이 자신 있게 틀리면 섞기가 손해 |
 | 6 찾기+답하기 | 22문항: 찾기 성공·답함 15, 안전한 거절 4, 위험 3 | 가장 위험 = 비슷하지만 다른 대상의 조각으로 자신 있게 틀림 |
+| 7 조각에 프로젝트 이름표 | 위험한 답 2 → 이름표만 3 → 이름표+확인 지시 1, 잃은 정답 0 → 1 | 이름표는 찾기를 끌어오지만, 답에 효과를 내려면 '이름표로 걸러라' 지시가 필요 |
 
 ## 실행
 
 - 질문 실험: `python3 step1_chat.py [모델]` — `private/questions.json`(`[["라벨", "질문"], …]`)이 있으면 그 질문, 없으면 공개 예시
 - 문서 붙이기 실험: `python3 step2_attach.py [모델]` — `private/step2.json`(지시·문서·질문 묶음)이 있으면 그 설정, 없으면 공개 예시(가상의 도서관 공지)
-- 색인 만들기: `python3 step3_index.py --root <문서 루트> [--dirs docs tools]` → `private/index/` (git 제외)
+- 색인 만들기: `python3 step3_index.py --root <문서 루트> [--dirs docs tools] [--projects <이름표.json>] [--same-files-as <기존 색인>] [--out <폴더>]` → 기본 `private/index/` (git 제외)
 - 임베딩 찾기: `python3 step3_search.py [-k 5] "질문" …` — 질문을 안 주면 `private/step3_queries.json`
 - 시험지 채점: `python3 step4_eval.py <시험지.json> <결과.json>` — 임베딩 검색의 문서 순위로 recall@1·@5 (시험지는 `private/`)
 - 섞어 찾기 채점: `python3 step5_hybrid.py <시험지.json> <결과.json> --keyword-cmd "<BM25 검색 명령 --json>" [--rrf-k 60] [--kw-weight 1.0]`
-- 찾기+답하기: `python3 step6_rag.py <결과.json> <시험지.json> [<시험지.json> …] [--model qwen3.5:4b] [-k 5]`
+- 찾기+답하기: `python3 step6_rag.py <결과.json> <시험지.json> [<시험지.json> …] [--model qwen3.5:4b] [-k 5] [--index <색인>] [--check-project]`
 
 ## Ollama 다루기
 

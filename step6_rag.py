@@ -43,14 +43,18 @@ def build_prompt(question, found):
     parts = []
     for n, c in enumerate(found, 1):
         source = c["path"] + (f" > {c['heading']}" if c["heading"] else "")
-        parts.append(f"[{n}] 출처: {source}\n{c['text']}")
+        project = f"프로젝트: {c['project']} · " if c.get("project") else ""
+        parts.append(f"[{n}] {project}출처: {source}\n{c['text']}")
     return "[자료]\n" + "\n\n".join(parts) + f"\n\n[질문]\n{question}"
 
 
-def ask(model, user):
+CHECK_PROJECT = " 자료마다 붙은 프로젝트가 질문이 묻는 대상과 다르면 그 자료는 근거로 쓰지 마."
+
+
+def ask(model, user, system=SYSTEM):
     body = json.dumps({
         "model": model,
-        "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}],
+        "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
         "stream": False,
         "think": False,
         "options": {"temperature": 0, "num_ctx": NUM_CTX},
@@ -67,8 +71,10 @@ def main():
     ap.add_argument("--model", default="qwen3.5:4b")
     ap.add_argument("-k", type=int, default=5)
     ap.add_argument("--index", default=str(HERE / "private" / "index"))
+    ap.add_argument("--check-project", action="store_true", help="지시에 '프로젝트가 다른 자료는 쓰지 마' 추가")
     opts = ap.parse_args()
 
+    system = SYSTEM + (CHECK_PROJECT if opts.check_project else "")
     meta, chunks, rows = s3.load_index(Path(opts.index))
     records, cells = [], {}
     for ts_path in opts.testsets:
@@ -76,7 +82,7 @@ def main():
         exclude = ts.get("exclude_prefix")
         for it in ts["items"]:
             found = top_chunks(it["question"], meta, chunks, rows, exclude, opts.k)
-            r = ask(opts.model, build_prompt(it["question"], found))
+            r = ask(opts.model, build_prompt(it["question"], found), system)
             answer = r["message"]["content"].strip()
             gold = set(it["gold_paths"])
             hit = [n for n, c in enumerate(found, 1) if c["path"] in gold]

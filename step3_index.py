@@ -74,7 +74,16 @@ def split_long(body):
     return pieces
 
 
-def chunk_doc(rel, text):
+def project_of(rel, projects):
+    """경로 접두가 가장 길게 맞는 프로젝트 이름. 표가 없거나 안 맞으면 최상위 폴더 다음 폴더 이름."""
+    best = max((p for p in projects if rel.startswith(p)), key=len, default=None)
+    if best:
+        return projects[best]
+    parts = rel.split("/")
+    return parts[1] if len(parts) > 2 else ""
+
+
+def chunk_doc(rel, text, project=""):
     lines = text.split("\n")
     meta, start = strip_frontmatter(lines)
     title = meta.get("title") or next((x[2:].strip() for x in lines[start:] if x.startswith("# ")), rel)
@@ -102,8 +111,12 @@ def chunk_doc(rel, text):
     chunks = []
     for line_no, heading, body in sections:
         for piece in split_long(body):
-            prefix = f"문서: {title}\n" + (f"키워드: {keywords}\n" if keywords else "") + (f"절: {heading}\n" if heading else "")
-            chunks.append({"path": rel, "line": line_no, "heading": heading, "text": prefix + piece})
+            prefix = ((f"프로젝트: {project}\n" if project else "") + f"문서: {title}\n"
+                      + (f"키워드: {keywords}\n" if keywords else "") + (f"절: {heading}\n" if heading else ""))
+            chunk = {"path": rel, "line": line_no, "heading": heading, "text": prefix + piece}
+            if project:
+                chunk["project"] = project
+            chunks.append(chunk)
     return chunks
 
 
@@ -125,10 +138,17 @@ def main():
     ap.add_argument("--dirs", nargs="+", default=["docs", "tools"])
     ap.add_argument("--out", default=str(Path(__file__).resolve().parent / "private" / "index"))
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--projects", help='프로젝트 이름표 JSON {"경로 접두": "이름"} — 주면 조각 맨 앞에 "프로젝트:" 줄을 붙임')
+    ap.add_argument("--same-files-as", help="기존 색인 폴더 — 그 색인에 든 문서만 다시 색인(비교 실험용)")
     opts = ap.parse_args()
 
     root = os.path.expanduser(opts.root)
+    projects = json.loads(Path(opts.projects).read_text(encoding="utf-8")) if opts.projects else None
     files, mirror_skipped = scan(root, opts.dirs)
+    if opts.same_files_as:
+        with open(Path(opts.same_files_as) / "chunks.jsonl", encoding="utf-8") as f:
+            keep = {json.loads(line)["path"] for line in f}
+        files = [p for p in files if os.path.relpath(p, root) in keep]
     chunks, unreadable = [], 0
     for path in files:
         try:
@@ -136,7 +156,8 @@ def main():
         except (OSError, UnicodeDecodeError):
             unreadable += 1
             continue
-        chunks.extend(chunk_doc(os.path.relpath(path, root), text))
+        rel = os.path.relpath(path, root)
+        chunks.extend(chunk_doc(rel, text, project_of(rel, projects) if projects is not None else ""))
 
     sizes = sorted(len(c["text"]) for c in chunks)
     print(f"문서 {len(files)}편 (미러 제외 {mirror_skipped}, 읽기 실패 {unreadable}) → 조각 {len(chunks)}개")
@@ -164,7 +185,7 @@ def main():
         for c in chunks:
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
     meta = {"model": MODEL, "dim": dim, "count": len(chunks), "docs": len(files), "seconds": round(elapsed, 1),
-            "max_chars": MAX_CHARS, "built": time.strftime("%Y-%m-%d %H:%M")}
+            "max_chars": MAX_CHARS, "projects": bool(projects), "built": time.strftime("%Y-%m-%d %H:%M")}
     (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"완료: {len(chunks)}개 × {dim}차원, {elapsed:.0f}초 (초당 {len(chunks) / elapsed:.1f}개) → {out}")
 
