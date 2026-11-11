@@ -38,6 +38,7 @@
 - 문서 붙이기 실험: `python3 step2_attach.py [모델]` — `private/step2.json`(지시·문서·질문 묶음)이 있으면 그 설정, 없으면 공개 예시(가상의 도서관 공지)
 - 색인 만들기: `python3 step3_index.py --root <문서 루트> [--dirs docs tools]` → `private/index/` (git 제외)
 - 임베딩 찾기: `python3 step3_search.py [-k 5] "질문" …` — 질문을 안 주면 `private/step3_queries.json`
+- 시험지 채점: `python3 step4_eval.py <시험지.json> <결과.json>` — 임베딩 검색의 문서 순위로 recall@1·@5 (시험지는 `private/`)
 
 ## Ollama 다루기
 
