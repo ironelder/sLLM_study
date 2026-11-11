@@ -43,6 +43,7 @@
 | 5 섞어 찾기(RRF) | 바꿔 말함 recall@5 6 → 4 | 한쪽이 자신 있게 틀리면 섞기가 손해 |
 | 6 찾기+답하기 | 22문항: 찾기 성공·답함 15, 안전한 거절 4, 위험 3 | 가장 위험 = 비슷하지만 다른 대상의 조각으로 자신 있게 틀림 |
 | 7 조각에 프로젝트 이름표 | 위험한 답 2 → 이름표만 3 → 이름표+확인 지시 1, 잃은 정답 0 → 1 | 이름표는 찾기를 끌어오지만, 답에 효과를 내려면 '이름표로 걸러라' 지시가 필요 |
+| 8 4B vs 9B | 위험한 답 4B 2 → 9B 0, 문항당 7초 → 27초 | 큰 모델은 이름표 없이도 다른 대상을 알아챔. 대신 느리고 16GB 에서 메모리 빠듯, 문서 없이는 더 그럴듯하게 지어냄 |
 
 ## 실행
 
@@ -52,6 +53,7 @@
 - 임베딩 찾기: `python3 step3_search.py [-k 5] "질문" …` — 질문을 안 주면 `private/step3_queries.json`
 - 시험지 채점: `python3 step4_eval.py <시험지.json> <결과.json>` — 임베딩 검색의 문서 순위로 recall@1·@5 (시험지는 `private/`)
 - 섞어 찾기 채점: `python3 step5_hybrid.py <시험지.json> <결과.json> --keyword-cmd "<BM25 검색 명령 --json>" [--rrf-k 60] [--kw-weight 1.0]`
+- 실행 결과 비교: `python3 compare_runs.py 이름=결과.json [이름=결과.json …] [--no-answer-ids N1]` — 같은 거절 판정으로 다시 세고 칸이 다른 문항을 나란히
 - 찾기+답하기: `python3 step6_rag.py <결과.json> <시험지.json> [<시험지.json> …] [--model qwen3.5:4b] [-k 5] [--index <색인>] [--check-project]`
 
 ## Ollama 다루기

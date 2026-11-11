@@ -7,6 +7,7 @@
 import argparse
 import json
 import re
+import socket
 import sys
 import urllib.request
 from pathlib import Path
@@ -15,6 +16,8 @@ import step3_search as s3
 
 HERE = Path(__file__).resolve().parent
 CHAT_API = "http://127.0.0.1:11434/api/chat"
+EMBED_API = "http://127.0.0.1:11434/api/embed"
+ASK_TIMEOUT = 240
 NUM_CTX = 12288
 REFUSAL = "자료에 없어요"
 SYSTEM = (
@@ -23,9 +26,16 @@ SYSTEM = (
 )
 
 
+REFUSE_RE = re.compile(r"자료.{0,80}(없(어요|습니다|음|다)|않습니다|부족)")
+
+
 def is_refusal(answer):
-    # 모델이 지시 문구를 조금씩 바꿔 거절함("자료에 해당 내용이 없어요"·"자료에 없습니다", 11-11 실측)
-    return bool(re.search(r"자료에.{0,12}없", answer)) and len(answer) < 40
+    # 모델이 거절 문구를 바꿔 말하고 이유를 덧붙임("제공된 자료에는 …가 명시되어 있지 않습니다 … 근거 자료가 없습니다", 11-11 실측)
+    # → 첫 문장이 '자료에 없음'이고, 짧거나 마지막 문장도 '자료에 없음'이면 거절
+    sentences = re.split(r"(?<=[.!?])\s", answer.strip())
+    if not REFUSE_RE.search(sentences[0]):
+        return False
+    return len(answer) < 160 or bool(REFUSE_RE.search(sentences[-1]))
 
 
 def top_chunks(query, meta, chunks, rows, exclude, k):
@@ -60,8 +70,15 @@ def ask(model, user, system=SYSTEM):
         "options": {"temperature": 0, "num_ctx": NUM_CTX},
     }).encode()
     req = urllib.request.Request(CHAT_API, data=body, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=600) as res:
+    with urllib.request.urlopen(req, timeout=ASK_TIMEOUT) as res:
         return json.load(res)
+
+
+def unload(model):
+    body = json.dumps({"model": model, "input": "", "keep_alive": 0}).encode()
+    req = urllib.request.Request(EMBED_API, data=body, headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=60):
+        pass
 
 
 def main():
@@ -76,31 +93,42 @@ def main():
 
     system = SYSTEM + (CHECK_PROJECT if opts.check_project else "")
     meta, chunks, rows = s3.load_index(Path(opts.index))
-    records, cells = [], {}
+    # 찾기를 먼저 다 끝내고 임베딩 모델을 내린 뒤 답하기 — 큰 답하기 모델과 둘이 같이 메모리에 오르지 않게(16GB 실측)
+    jobs = []
     for ts_path in opts.testsets:
         ts = json.loads(Path(ts_path).read_text(encoding="utf-8"))
         exclude = ts.get("exclude_prefix")
         for it in ts["items"]:
-            found = top_chunks(it["question"], meta, chunks, rows, exclude, opts.k)
+            jobs.append((it, top_chunks(it["question"], meta, chunks, rows, exclude, opts.k)))
+    unload(meta["model"])
+    del rows
+
+    records, cells = [], {}
+    for it, found in jobs:
+        try:
             r = ask(opts.model, build_prompt(it["question"], found), system)
-            answer = r["message"]["content"].strip()
-            gold = set(it["gold_paths"])
-            hit = [n for n, c in enumerate(found, 1) if c["path"] in gold]
-            cited = sorted({int(x) for x in re.findall(r"\[(\d)\]", answer)})
-            refused = is_refusal(answer)
-            if not gold:
-                cell = "답 없는 질문 · 거절" if refused else "답 없는 질문 · 답함"
-            else:
-                cell = ("찾기 성공" if hit else "찾기 실패") + " · " + ("거절" if refused else "답함")
-            cells[cell] = cells.get(cell, 0) + 1
-            records.append({"id": it["id"], "question": it["question"], "cell": cell, "gold_in_context": hit,
-                            "cited": cited, "cited_gold": bool(set(cited) & set(hit)), "answer": answer,
-                            "context": [f"{c['path']}:{c['line']}" for c in found],
-                            "prompt_tokens": r.get("prompt_eval_count"), "answer_tokens": r.get("eval_count"),
-                            "seconds": round(r.get("total_duration", 0) / 1e9, 1)})
-            print(f"{it['id']} [{cell}] 정답 조각 위치={hit or '-'} 인용={cited or '-'} "
-                  f"({records[-1]['prompt_tokens']}→{records[-1]['answer_tokens']}토큰, {records[-1]['seconds']}초)")
-            print(f"   {answer[:220]}".replace("\n", " "))
+        except (socket.timeout, TimeoutError):
+            print(f"{it['id']}: 답이 {ASK_TIMEOUT}초 안에 안 옴 — 메모리 부족 의심, 여기까지 저장하고 멈춤")
+            Path(opts.out).write_text(json.dumps(records, ensure_ascii=False, indent=1), encoding="utf-8")
+            return 2
+        answer = r["message"]["content"].strip()
+        gold = set(it["gold_paths"])
+        hit = [n for n, c in enumerate(found, 1) if c["path"] in gold]
+        cited = sorted({int(x) for x in re.findall(r"\[(\d)\]", answer)})
+        refused = is_refusal(answer)
+        if not gold:
+            cell = "답 없는 질문 · 거절" if refused else "답 없는 질문 · 답함"
+        else:
+            cell = ("찾기 성공" if hit else "찾기 실패") + " · " + ("거절" if refused else "답함")
+        cells[cell] = cells.get(cell, 0) + 1
+        records.append({"id": it["id"], "question": it["question"], "cell": cell, "gold_in_context": hit,
+                        "cited": cited, "cited_gold": bool(set(cited) & set(hit)), "answer": answer,
+                        "context": [f"{c['path']}:{c['line']}" for c in found],
+                        "prompt_tokens": r.get("prompt_eval_count"), "answer_tokens": r.get("eval_count"),
+                        "seconds": round(r.get("total_duration", 0) / 1e9, 1)})
+        print(f"{it['id']} [{cell}] 정답 조각 위치={hit or '-'} 인용={cited or '-'} "
+              f"({records[-1]['prompt_tokens']}→{records[-1]['answer_tokens']}토큰, {records[-1]['seconds']}초)", flush=True)
+        print(f"   {answer[:220]}".replace("\n", " "), flush=True)
 
     Path(opts.out).write_text(json.dumps(records, ensure_ascii=False, indent=1), encoding="utf-8")
     print("\n칸별 개수")
