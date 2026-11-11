@@ -3,3 +3,5 @@ private/
 results/
 # 186MB 배포 파일, install-ollama.sh 의 sha256 으로 다시 받아 대조
 setup/*.tgz
+__pycache__/
+.DS_Store
