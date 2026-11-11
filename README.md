@@ -39,6 +39,7 @@
 - 색인 만들기: `python3 step3_index.py --root <문서 루트> [--dirs docs tools]` → `private/index/` (git 제외)
 - 임베딩 찾기: `python3 step3_search.py [-k 5] "질문" …` — 질문을 안 주면 `private/step3_queries.json`
 - 시험지 채점: `python3 step4_eval.py <시험지.json> <결과.json>` — 임베딩 검색의 문서 순위로 recall@1·@5 (시험지는 `private/`)
+- 섞어 찾기 채점: `python3 step5_hybrid.py <시험지.json> <결과.json> --keyword-cmd "<BM25 검색 명령 --json>" [--rrf-k 60] [--kw-weight 1.0]`
 
 ## Ollama 다루기
 
