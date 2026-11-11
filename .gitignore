@@ -1,0 +1,5 @@
+# 원격이 GitHub 라 사내 정보(KB 원문·임베딩·사내 질문·결과)는 아래 폴더에만 두고 커밋하지 않음
+private/
+results/
+# 186MB 배포 파일, install-ollama.sh 의 sha256 으로 다시 받아 대조
+setup/*.tgz
