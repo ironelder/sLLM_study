@@ -5,3 +5,5 @@ results/
 setup/*.tgz
 __pycache__/
 .DS_Store
+# 10단계 FAISS 실습용 가상 환경 (python3.11 -m venv .venv)
+.venv/

@@ -38,8 +38,14 @@ def is_refusal(answer):
     return len(answer) < 160 or bool(REFUSE_RE.search(sentences[-1]))
 
 
-def top_chunks(query, meta, chunks, rows, exclude, k):
+def top_chunks(query, meta, chunks, rows, exclude, k, faiss_index=None):
     q = s3.embed(meta["model"], query)
+    if faiss_index is not None:
+        import faiss_store
+        # 제외 경로는 찾은 뒤 거르므로 넉넉히 받음
+        hits = faiss_store.search(faiss_index, q, k * 20)
+        found = [chunks[i] for _, i in hits if not (exclude and chunks[i]["path"].startswith(exclude))]
+        return found[:k]
     scored = []
     for row, c in zip(rows, chunks):
         if exclude and c["path"].startswith(exclude):
@@ -89,17 +95,22 @@ def main():
     ap.add_argument("-k", type=int, default=5)
     ap.add_argument("--index", default=str(HERE / "private" / "index"))
     ap.add_argument("--check-project", action="store_true", help="지시에 '프로젝트가 다른 자료는 쓰지 마' 추가")
+    ap.add_argument("--faiss", choices=["flat", "hnsw"], help="FAISS 색인으로 찾기 (.venv/bin/python 으로 실행)")
     opts = ap.parse_args()
 
     system = SYSTEM + (CHECK_PROJECT if opts.check_project else "")
     meta, chunks, rows = s3.load_index(Path(opts.index))
+    faiss_index = None
+    if opts.faiss:
+        import faiss_store
+        faiss_index = faiss_store.open_index(opts.index, opts.faiss)
     # 찾기를 먼저 다 끝내고 임베딩 모델을 내린 뒤 답하기 — 큰 답하기 모델과 둘이 같이 메모리에 오르지 않게(16GB 실측)
     jobs = []
     for ts_path in opts.testsets:
         ts = json.loads(Path(ts_path).read_text(encoding="utf-8"))
         exclude = ts.get("exclude_prefix")
         for it in ts["items"]:
-            jobs.append((it, top_chunks(it["question"], meta, chunks, rows, exclude, opts.k)))
+            jobs.append((it, top_chunks(it["question"], meta, chunks, rows, exclude, opts.k, faiss_index)))
     unload(meta["model"])
     del rows
 

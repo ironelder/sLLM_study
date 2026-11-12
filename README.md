@@ -18,7 +18,8 @@
 | 실행 도구 | Ollama v0.40.16 CLI (`setup/install-ollama.sh`) |
 | 답하는 sLLM | `qwen3.5:4b` (3.3~4.0GB). 비교 후보 `qwen3:4b`(2.5GB)·`gemma4:e4b` |
 | 임베딩 | `bge-m3` (1.2GB, 입력 8192토큰) |
-| 코드 | Python, 의존성 = 표준 라이브러리 (+ 이후 numpy) |
+| 코드 | Python 표준 라이브러리만. 10단계 FAISS 비교만 `.venv`(Python 3.11)에 `faiss-cpu`·`numpy` (`setup/requirements-faiss.txt`) |
+| 벡터 저장·찾기 | 벡터 DB 없이 직접 구현 — 길이 1로 맞춘 벡터를 `vectors.f32` 에 저장하고 질문과 전부 내적. 10단계에서 FAISS Flat·HNSW 와 비교 |
 | 키워드 찾기 | 기존에 쓰던 BM25 키워드 검색 도구와 비교 |
 
 ## 단계
@@ -34,6 +35,7 @@
 | 7 | 조각에 프로젝트 이름표, "다른 프로젝트 자료는 쓰지 마" 지시 | 위험한 답·잃은 정답 |
 | 8 | 같은 비교를 9B 모델로 | 위험한 답, 속도, 메모리 |
 | 9 | 분리망 가정: 모델을 묶어 옮기고 인터넷 없이 띄우기 + 가상 VOC 티켓 해석 → 고객 로그 조회 → 개인정보 가림 → 요약 → 메일 | 원인 판단, 개인정보 노출, 인터넷 없이 동작 |
+| 10 | 직접 만든 벡터 찾기를 FAISS(Flat·HNSW)와 비교, 20만 개로 불려 규모 시험 | recall 같은가, 찾기 시간, HNSW 정확도 |
 
 단계별 정리 = `notes/`.
 
@@ -50,6 +52,7 @@
 | 7 조각에 프로젝트 이름표 | 위험한 답 2 → 이름표만 3 → 이름표+확인 지시 1, 잃은 정답 0 → 1 | 이름표는 찾기를 끌어오지만, 답에 효과를 내려면 '이름표로 걸러라' 지시가 필요 |
 | 8 4B vs 9B | 위험한 답 4B 2 → 9B 0, 문항당 7초 → 27초 | 큰 모델은 이름표 없이도 다른 대상을 알아챔. 대신 느리고 16GB 에서 메모리 빠듯, 문서 없이는 더 그럴듯하게 지어냄 |
 | 9 분리망 가정 VOC (11-12) | 모델 5.13GB tar 이동·blob 지문 738/738, 가상 티켓 6건 분류 6/6·원인 판단 4/4·개인정보 노출 0, 외부 차단 상태 메일 6통 | 식별자·조회·가림·검증은 코드, 해석·요약은 모델. 판단은 JSON 칸으로 받고 "요약 먼저, 판단 나중" 순서가 정확. 4B 는 "이번 주 월요일" 같은 날짜 계산이 약함 |
+| 10 FAISS 비교 (11-12) | 찾기 1회: 파이썬 243ms → numpy·FAISS Flat 약 1ms → HNSW 0.3ms, recall 4가지 모두 같음, RAG 4칸 같음. 20만 개: 파이썬 약 7초(추정) → HNSW 9ms·정확도 90% | 이 규모에선 느린 원인이 파이썬 for 문이라 numpy 로 충분. FAISS 는 수십만 개 이상에서 의미, HNSW 는 근사라 정확도를 같이 재야 함 |
 
 ## 실행
 
@@ -63,6 +66,7 @@
 - 찾기+답하기: `python3 step6_rag.py <결과.json> <시험지.json> [<시험지.json> …] [--model qwen3.5:4b] [-k 5] [--index <색인>] [--check-project]`
 - 모델 옮기기: `python3 setup/move_models.py pack <묶음.tar> qwen3.5:4b bge-m3` → `python3 setup/move_models.py unpack <묶음.tar> <풀 폴더>` (지문 대조)
 - VOC 흐름: `python3 step9_voc.py samples/voc/tickets.json samples/voc/logs.jsonl <출력 폴더> [--expected samples/voc/expected.json] [--smtp 127.0.0.1:2525]` — 시험용 메일 받는 쪽 `python3 mail_sink.py --port 2525`
+- FAISS 비교: `.venv/bin/python step10_faiss.py <시험지.json> <결과.json> [--scale 200000]` — RAG 를 FAISS 로: `.venv/bin/python step6_rag.py … --faiss hnsw` (설치 = `course/10-faiss.md`)
 - 인터넷 없이 전체 확인: Wi-Fi 끄고 `sh setup/offline-check.sh` (또는 `--sandbox` 로 밖으로 나가는 연결만 차단). 옮긴 모델 폴더 = `private/offline/models`
 
 ## Ollama 다루기
