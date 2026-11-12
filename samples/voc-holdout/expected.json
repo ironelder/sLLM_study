@@ -1,0 +1,184 @@
+{
+  "VOC-201": {
+    "category": [
+      "결제"
+    ],
+    "occurred_date": "2026-11-02",
+    "key_codes": [
+      "INSTALLMENT_NOT_SUPPORTED"
+    ],
+    "cause": true
+  },
+  "VOC-202": {
+    "category": [
+      "배송"
+    ],
+    "cause": false
+  },
+  "VOC-203": {
+    "category": [
+      "로그인"
+    ],
+    "occurred_date": "2026-11-05",
+    "key_codes": [
+      "ACCOUNT_LOCKED"
+    ],
+    "cause": true
+  },
+  "VOC-204": {
+    "category": [
+      "앱 오류"
+    ],
+    "occurred_at": "2026-11-03 15:00",
+    "key_codes": [
+      "CART_RENDER_OOM"
+    ],
+    "cause": true
+  },
+  "VOC-205": {
+    "category": [
+      "환불·취소"
+    ],
+    "occurred_date": "2026-11-03",
+    "key_codes": [
+      "PARTNER_API_TIMEOUT"
+    ],
+    "cause": true
+  },
+  "VOC-206": {
+    "category": [
+      "배송"
+    ],
+    "occurred_date": "2026-11-06",
+    "key_codes": [
+      "ADDRESS_NOT_FOUND"
+    ],
+    "cause": true
+  },
+  "VOC-207": {
+    "category": [
+      "기타"
+    ],
+    "no_customer": true
+  },
+  "VOC-208": {
+    "category": [
+      "결제"
+    ],
+    "occurred_at": "2026-11-06 14:00",
+    "key_codes": [
+      "ISSUER_LIMIT_EXCEEDED"
+    ],
+    "cause": true
+  },
+  "VOC-209": {
+    "category": [
+      "기타"
+    ],
+    "occurred_date": "2026-11-06",
+    "key_codes": [
+      "REVIEW_TOO_SHORT"
+    ],
+    "cause": true
+  },
+  "VOC-210": {
+    "category": [
+      "앱 오류"
+    ],
+    "occurred_at": "2026-11-07 23:00",
+    "cause": false
+  },
+  "VOC-211": {
+    "category": [
+      "결제"
+    ],
+    "key_codes": [
+      "POINT_HOLD_FAILED"
+    ],
+    "cause": true
+  },
+  "VOC-212": {
+    "category": [
+      "결제",
+      "환불·취소"
+    ],
+    "occurred_at": "2026-11-09 19:00",
+    "key_codes": [
+      "STOCK_SYNC_ERROR",
+      "PG_CANCEL_TIMEOUT"
+    ],
+    "cause": true
+  },
+  "VOC-213": {
+    "category": [
+      "로그인"
+    ],
+    "occurred_date": "2026-11-08",
+    "key_codes": [
+      "OTP_EXPIRED"
+    ],
+    "cause": true
+  },
+  "VOC-214": {
+    "category": [
+      "환불·취소"
+    ],
+    "occurred_date": "2026-11-04",
+    "cause": false
+  },
+  "VOC-215": {
+    "category": [
+      "앱 오류"
+    ],
+    "occurred_date": "2026-11-09",
+    "key_codes": [
+      "JSON_PARSE_ERROR"
+    ],
+    "cause": true
+  },
+  "VOC-216": {
+    "category": [
+      "로그인"
+    ],
+    "no_customer": true
+  },
+  "VOC-217": {
+    "category": [
+      "배송",
+      "환불·취소"
+    ],
+    "occurred_date": "2026-11-10",
+    "key_codes": [
+      "LOCATION_MISMATCH"
+    ],
+    "cause": true
+  },
+  "VOC-218": {
+    "category": [
+      "기타",
+      "결제"
+    ],
+    "cause": false
+  },
+  "VOC-219": {
+    "category": [
+      "결제",
+      "로그인"
+    ],
+    "occurred_at": "2026-11-11 20:40",
+    "key_codes": [
+      "SESSION_TOKEN_INVALID"
+    ],
+    "cause": true
+  },
+  "VOC-220": {
+    "category": [
+      "환불·취소"
+    ],
+    "occurred_at": "2026-11-11 14:00",
+    "key_codes": [
+      "ACCOUNT_HOLDER_MISMATCH"
+    ],
+    "cause": true
+  }
+}

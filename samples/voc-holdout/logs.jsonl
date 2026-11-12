@@ -1,0 +1,190 @@
+{"ts": "2026-11-01T11:20:05+09:00", "customer": "C-204517", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-01T11:20:41+09:00", "customer": "C-204517", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-01T11:24:10+09:00", "customer": "C-204517", "device": "android", "event": "SEARCH", "code": "OK", "detail": "query=패딩 took_ms=310 results=420"}
+{"ts": "2026-11-01T21:10:44+09:00", "customer": "C-213088", "device": "ios", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-01T21:14:02+09:00", "customer": "C-213088", "device": "ios", "event": "ORDER_PLACE", "code": "OK", "detail": "order=O-30544 item=I-48102"}
+{"ts": "2026-11-01T21:14:05+09:00", "customer": "C-213088", "device": "ios", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-30544 amount=79000 method=card"}
+{"ts": "2026-11-02T08:12:03+09:00", "customer": "C-224470", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-02T08:12:30+09:00", "customer": "C-224470", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password email=sora.kang@example.com"}
+{"ts": "2026-11-02T08:15:44+09:00", "customer": "C-224470", "device": "android", "event": "SEARCH", "code": "OK", "detail": "query=가습기 took_ms=290 results=64"}
+{"ts": "2026-11-02T18:20:11+09:00", "customer": "C-238420", "device": "android", "event": "ORDER_PLACE", "code": "OK", "detail": "order=O-32210 item=I-47011"}
+{"ts": "2026-11-02T18:20:14+09:00", "customer": "C-238420", "device": "android", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-32210 amount=35800 method=card"}
+{"ts": "2026-11-02T19:40:12+09:00", "customer": "C-204517", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-02T19:41:02+09:00", "customer": "C-204517", "device": "android", "event": "CART_ADD", "code": "OK", "detail": "item=I-55120 qty=1"}
+{"ts": "2026-11-02T19:43:27+09:00", "customer": "C-204517", "device": "android", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-31877 amount=189000 installment=6"}
+{"ts": "2026-11-02T19:43:29+09:00", "customer": "C-204517", "device": "android", "event": "PAY_FAIL", "code": "INSTALLMENT_NOT_SUPPORTED", "detail": "order=O-31877 amount=189000 installment=6 merchant_max=3"}
+{"ts": "2026-11-02T19:44:05+09:00", "customer": "C-204517", "device": "android", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-31877 amount=189000 installment=6"}
+{"ts": "2026-11-02T19:44:06+09:00", "customer": "C-204517", "device": "android", "event": "PAY_FAIL", "code": "INSTALLMENT_NOT_SUPPORTED", "detail": "order=O-31877 amount=189000 installment=6 merchant_max=3"}
+{"ts": "2026-11-02T19:44:30+09:00", "customer": "C-204571", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-02T19:45:20+09:00", "customer": "C-204571", "device": "android", "event": "PAY_FAIL", "code": "INSUFFICIENT_FUNDS", "detail": "order=O-31880 amount=42000"}
+{"ts": "2026-11-02T19:50:11+09:00", "customer": "C-204517", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=cart"}
+{"ts": "2026-11-02T22:10:30+09:00", "customer": "C-242659", "device": "android", "event": "ORDER_PLACE", "code": "OK", "detail": "order=O-31502 item=I-53318"}
+{"ts": "2026-11-02T22:10:33+09:00", "customer": "C-242659", "device": "android", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-31502 amount=49000 method=card"}
+{"ts": "2026-11-03T08:30:15+09:00", "customer": "C-213088", "device": "ios", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-03T08:30:40+09:00", "customer": "C-213088", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-30544"}
+{"ts": "2026-11-03T09:02:44+09:00", "customer": "C-204517", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-03T10:02:15+09:00", "customer": "C-235590", "device": "android", "event": "ORDER_PLACE", "code": "OK", "detail": "order=O-31066 item=I-44518"}
+{"ts": "2026-11-03T10:02:20+09:00", "customer": "C-235590", "device": "android", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-31066 amount=128000 method=bank_transfer"}
+{"ts": "2026-11-03T12:05:10+09:00", "customer": "C-227341", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-03T12:06:02+09:00", "customer": "C-227341", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-03T14:48:20+09:00", "customer": "C-251906", "device": "ios", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-03T14:50:02+09:00", "customer": "C-251906", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-03T14:52:44+09:00", "customer": "C-251906", "device": "ios", "event": "CART_ADD", "code": "OK", "detail": "item=I-50877 qty=1 cart_size=23"}
+{"ts": "2026-11-03T15:04:51+09:00", "customer": "C-251906", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=cart"}
+{"ts": "2026-11-03T15:04:53+09:00", "customer": "C-251906", "device": "ios", "event": "APP_CRASH", "code": "CART_RENDER_OOM", "detail": "screen=cart cart_size=23 mem_mb=1890"}
+{"ts": "2026-11-03T15:05:02+09:00", "customer": "C-262019", "device": "android", "event": "APP_CRASH", "code": "IMAGE_DECODE_FAIL", "detail": "screen=product_detail item=I-50231"}
+{"ts": "2026-11-03T15:05:40+09:00", "customer": "C-262019", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-03T15:06:10+09:00", "customer": "C-251906", "device": "ios", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-03T15:06:31+09:00", "customer": "C-251906", "device": "ios", "event": "APP_CRASH", "code": "CART_RENDER_OOM", "detail": "screen=cart cart_size=23 mem_mb=1902"}
+{"ts": "2026-11-03T20:30:02+09:00", "customer": "C-238420", "device": "android", "event": "PROFILE_UPDATE", "code": "OK", "detail": "field=email email=answer.kim@example.com"}
+{"ts": "2026-11-03T20:31:12+09:00", "customer": "C-238420", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-32210"}
+{"ts": "2026-11-03T20:31:40+09:00", "customer": "C-238420", "device": "android", "event": "ORDER_CANCEL_REQUEST", "code": "OK", "detail": "order=O-32210"}
+{"ts": "2026-11-03T20:32:10+09:00", "customer": "C-238420", "device": "android", "event": "ORDER_CANCEL_FAIL", "code": "PARTNER_API_TIMEOUT", "detail": "order=O-32210 partner=P-118 wait_ms=30000"}
+{"ts": "2026-11-03T20:33:05+09:00", "customer": "C-238420", "device": "android", "event": "ORDER_CANCEL_REQUEST", "code": "OK", "detail": "order=O-32210"}
+{"ts": "2026-11-03T20:33:35+09:00", "customer": "C-238420", "device": "android", "event": "ORDER_CANCEL_FAIL", "code": "PARTNER_API_TIMEOUT", "detail": "order=O-32210 partner=P-118 wait_ms=30000"}
+{"ts": "2026-11-04T10:10:05+09:00", "customer": "C-251906", "device": "ios", "event": "APP_INSTALL", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-04T10:12:40+09:00", "customer": "C-251906", "device": "ios", "event": "APP_CRASH", "code": "CART_RENDER_OOM", "detail": "screen=cart cart_size=23 mem_mb=1875"}
+{"ts": "2026-11-04T12:01:10+09:00", "customer": "C-256612", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-04T12:03:22+09:00", "customer": "C-256612", "device": "ios", "event": "CART_ADD", "code": "OK", "detail": "item=I-49920 qty=1"}
+{"ts": "2026-11-04T12:05:05+09:00", "customer": "C-256612", "device": "ios", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-31430 amount=12800 method=card"}
+{"ts": "2026-11-04T12:40:31+09:00", "customer": "C-266013", "device": "android", "event": "ORDER_PLACE", "code": "OK", "detail": "order=O-31455 item=I-52290"}
+{"ts": "2026-11-04T12:40:33+09:00", "customer": "C-266013", "device": "android", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-31455 amount=54000 method=card"}
+{"ts": "2026-11-04T13:20:11+09:00", "customer": "C-259947", "device": "ios", "event": "RETURN_REQUEST", "code": "OK", "detail": "order=O-31290 reason=size"}
+{"ts": "2026-11-04T15:50:02+09:00", "customer": "C-277150", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-30612"}
+{"ts": "2026-11-04T15:58:12+09:00", "customer": "C-277150", "device": "android", "event": "DELIVERY_HOLD", "code": "CARRIER_BACKLOG", "detail": "order=O-30612 courier=CR-01 hub=H-3"}
+{"ts": "2026-11-04T16:21:09+09:00", "customer": "C-213088", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-30544"}
+{"ts": "2026-11-04T16:25:30+09:00", "customer": "C-213088", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=chat_support"}
+{"ts": "2026-11-05T02:14:10+09:00", "customer": "C-227341", "device": "android", "event": "LOGIN_FAIL", "code": "PASSWORD_MISMATCH", "detail": "attempt=1"}
+{"ts": "2026-11-05T02:14:35+09:00", "customer": "C-227341", "device": "android", "event": "LOGIN_FAIL", "code": "PASSWORD_MISMATCH", "detail": "attempt=2"}
+{"ts": "2026-11-05T02:15:02+09:00", "customer": "C-227341", "device": "android", "event": "LOGIN_FAIL", "code": "PASSWORD_MISMATCH", "detail": "attempt=3"}
+{"ts": "2026-11-05T02:15:40+09:00", "customer": "C-227341", "device": "android", "event": "LOGIN_FAIL", "code": "PASSWORD_MISMATCH", "detail": "attempt=4"}
+{"ts": "2026-11-05T02:16:05+09:00", "customer": "C-227341", "device": "android", "event": "LOGIN_FAIL", "code": "PASSWORD_MISMATCH", "detail": "attempt=5"}
+{"ts": "2026-11-05T02:16:06+09:00", "customer": "C-227341", "device": "android", "event": "ACCOUNT_LOCK", "code": "ACCOUNT_LOCKED", "detail": "lock_minutes=1440 reason=pw_fail_5"}
+{"ts": "2026-11-05T02:18:30+09:00", "customer": "C-227341", "device": "android", "event": "LOGIN_FAIL", "code": "ACCOUNT_LOCKED", "detail": "attempt=6"}
+{"ts": "2026-11-05T02:20:41+09:00", "customer": "C-201893", "device": "ios", "event": "LOGIN_FAIL", "code": "PASSWORD_MISMATCH", "detail": "attempt=1"}
+{"ts": "2026-11-05T02:21:15+09:00", "customer": "C-201893", "device": "ios", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-05T08:55:12+09:00", "customer": "C-227341", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-05T08:55:40+09:00", "customer": "C-227341", "device": "android", "event": "LOGIN_FAIL", "code": "ACCOUNT_LOCKED", "detail": "attempt=7"}
+{"ts": "2026-11-05T09:14:22+09:00", "customer": "C-238420", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-05T09:14:50+09:00", "customer": "C-238420", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-32210"}
+{"ts": "2026-11-05T10:05:44+09:00", "customer": "C-259947", "device": "ios", "event": "RETURN_PICKUP", "code": "OK", "detail": "order=O-31290 courier=CR-01"}
+{"ts": "2026-11-05T15:20:00+09:00", "customer": "C-242659", "device": "android", "event": "DELIVERY_COMPLETE", "code": "OK", "detail": "order=O-31502 courier=CR-01"}
+{"ts": "2026-11-05T17:02:00+09:00", "customer": "C-266013", "device": "android", "event": "SHIP_START", "code": "OK", "detail": "order=O-31455 courier=CR-02"}
+{"ts": "2026-11-05T18:02:13+09:00", "customer": "C-251906", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=chat_support"}
+{"ts": "2026-11-05T19:20:11+09:00", "customer": "C-246338", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-05T19:25:40+09:00", "customer": "C-246338", "device": "android", "event": "LOGOUT", "code": "OK", "detail": "session_min=5"}
+{"ts": "2026-11-05T21:30:18+09:00", "customer": "C-298031", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=otp contact=010-0000-1196"}
+{"ts": "2026-11-05T21:31:02+09:00", "customer": "C-298031", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=event"}
+{"ts": "2026-11-06T09:40:22+09:00", "customer": "C-266013", "device": "android", "event": "DELIVERY_FAIL", "code": "ADDRESS_NOT_FOUND", "detail": "order=O-31455 courier=CR-02 reason=detail_address_missing"}
+{"ts": "2026-11-06T09:41:05+09:00", "customer": "C-266013", "device": "android", "event": "PUSH_SENT", "code": "OK", "detail": "type=delivery_address_check order=O-31455"}
+{"ts": "2026-11-06T09:52:30+09:00", "customer": "C-238877", "device": "ios", "event": "DELIVERY_HOLD", "code": "WEATHER_DELAY", "detail": "order=O-31470 courier=CR-02"}
+{"ts": "2026-11-06T10:11:40+09:00", "customer": "C-242659", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=review_write order=O-31502"}
+{"ts": "2026-11-06T10:12:05+09:00", "customer": "C-242659", "device": "android", "event": "REVIEW_SUBMIT", "code": "OK", "detail": "review=R-7781 order=O-31502 photo=2 text_len=12"}
+{"ts": "2026-11-06T10:12:07+09:00", "customer": "C-242659", "device": "android", "event": "POINT_GRANT_FAIL", "code": "REVIEW_TOO_SHORT", "detail": "review=R-7781 text_len=12 min_len=20 point=500"}
+{"ts": "2026-11-06T13:58:10+09:00", "customer": "C-219775", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-06T13:59:02+09:00", "customer": "C-219775", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=product_detail item=I-60010"}
+{"ts": "2026-11-06T14:00:48+09:00", "customer": "C-245102", "device": "ios", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-33117 amount=23000 method=card"}
+{"ts": "2026-11-06T14:01:18+09:00", "customer": "C-245102", "device": "ios", "event": "PAY_FAIL", "code": "PG_GATEWAY_TIMEOUT", "detail": "order=O-33117 amount=23000 wait_ms=15000"}
+{"ts": "2026-11-06T14:01:22+09:00", "customer": "C-219775", "device": "android", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-33120 amount=1350000 method=card"}
+{"ts": "2026-11-06T14:01:25+09:00", "customer": "C-219775", "device": "android", "event": "PAY_FAIL", "code": "ISSUER_LIMIT_EXCEEDED", "detail": "order=O-33120 amount=1350000"}
+{"ts": "2026-11-06T14:01:30+09:00", "customer": "C-271388", "device": "android", "event": "PAY_FAIL", "code": "PG_GATEWAY_TIMEOUT", "detail": "order=O-33119 amount=8900 wait_ms=15000"}
+{"ts": "2026-11-06T14:02:05+09:00", "customer": "C-219757", "device": "android", "event": "PAY_FAIL", "code": "PG_GATEWAY_TIMEOUT", "detail": "order=O-33121 amount=640000 wait_ms=15000"}
+{"ts": "2026-11-06T14:03:38+09:00", "customer": "C-219775", "device": "android", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-33120 amount=1350000 method=card"}
+{"ts": "2026-11-06T14:03:40+09:00", "customer": "C-219775", "device": "android", "event": "PAY_FAIL", "code": "ISSUER_LIMIT_EXCEEDED", "detail": "order=O-33120 amount=1350000"}
+{"ts": "2026-11-06T14:04:11+09:00", "customer": "C-219757", "device": "android", "event": "PAY_FAIL", "code": "PG_GATEWAY_TIMEOUT", "detail": "order=O-33121 amount=640000 wait_ms=15000"}
+{"ts": "2026-11-06T14:05:40+09:00", "customer": "C-245102", "device": "ios", "event": "PAY_FAIL", "code": "PG_GATEWAY_TIMEOUT", "detail": "order=O-33117 amount=23000 wait_ms=15000"}
+{"ts": "2026-11-06T14:06:00+09:00", "customer": "C-219775", "device": "android", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-33120 amount=1350000 method=card"}
+{"ts": "2026-11-06T14:06:02+09:00", "customer": "C-219775", "device": "android", "event": "PAY_FAIL", "code": "ISSUER_LIMIT_EXCEEDED", "detail": "order=O-33120 amount=1350000"}
+{"ts": "2026-11-06T14:12:20+09:00", "customer": "C-288054", "device": "ios", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-33125 amount=15900 method=card"}
+{"ts": "2026-11-06T14:30:15+09:00", "customer": "C-219775", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=cart"}
+{"ts": "2026-11-07T11:02:31+09:00", "customer": "C-242659", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=point_history"}
+{"ts": "2026-11-07T12:10:20+09:00", "customer": "C-268250", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_list orders=4"}
+{"ts": "2026-11-07T14:30:02+09:00", "customer": "C-259947", "device": "ios", "event": "RETURN_INSPECT", "code": "OK", "detail": "order=O-31290 result=pass"}
+{"ts": "2026-11-07T14:31:00+09:00", "customer": "C-259947", "device": "ios", "event": "REFUND_REQUEST", "code": "OK", "detail": "order=O-31290 amount=45900 method=card"}
+{"ts": "2026-11-07T14:31:05+09:00", "customer": "C-259947", "device": "ios", "event": "REFUND_APPROVED", "code": "OK", "detail": "order=O-31290 amount=45900 ref=R-55102 settle_days=3-5"}
+{"ts": "2026-11-07T14:35:10+09:00", "customer": "C-259974", "device": "android", "event": "REFUND_FAIL", "code": "PG_REFUND_TIMEOUT", "detail": "order=O-31302 amount=32000"}
+{"ts": "2026-11-07T20:11:48+09:00", "customer": "C-266013", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-07T20:12:10+09:00", "customer": "C-266013", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-31455"}
+{"ts": "2026-11-07T22:58:30+09:00", "customer": "C-275114", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-07T23:02:11+09:00", "customer": "C-275114", "device": "android", "event": "SEARCH", "code": "OK", "detail": "query=무선이어폰 took_ms=380 results=120"}
+{"ts": "2026-11-07T23:02:40+09:00", "customer": "C-275114", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=product_detail item=I-61002"}
+{"ts": "2026-11-07T23:03:15+09:00", "customer": "C-218446", "device": "ios", "event": "SEARCH_FAIL", "code": "SEARCH_TIMEOUT", "detail": "query=패딩 took_ms=8000"}
+{"ts": "2026-11-07T23:03:50+09:00", "customer": "C-218446", "device": "ios", "event": "SEARCH_FAIL", "code": "SEARCH_TIMEOUT", "detail": "query=롱패딩 took_ms=8000"}
+{"ts": "2026-11-07T23:04:02+09:00", "customer": "C-275114", "device": "android", "event": "PUSH_REGISTER_FAIL", "code": "PUSH_SERVER_UNREACHABLE", "detail": "retry_in_s=600"}
+{"ts": "2026-11-07T23:05:12+09:00", "customer": "C-275114", "device": "android", "event": "SEARCH", "code": "OK", "detail": "query=블루투스이어폰 took_ms=410 results=95"}
+{"ts": "2026-11-07T23:07:50+09:00", "customer": "C-275114", "device": "android", "event": "SEARCH", "code": "OK", "detail": "query=이어폰케이스 took_ms=365 results=310"}
+{"ts": "2026-11-08T09:10:45+09:00", "customer": "C-213380", "device": "ios", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-08T09:11:20+09:00", "customer": "C-213380", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_list orders=2"}
+{"ts": "2026-11-08T10:20:33+09:00", "customer": "C-275114", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-08T10:21:05+09:00", "customer": "C-275114", "device": "android", "event": "SEARCH", "code": "OK", "detail": "query=충전기 took_ms=350 results=88"}
+{"ts": "2026-11-08T11:30:12+09:00", "customer": "C-291746", "device": "ios", "event": "ORDER_PLACE", "code": "OK", "detail": "order=O-33310 item=I-59920"}
+{"ts": "2026-11-08T11:30:15+09:00", "customer": "C-291746", "device": "ios", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-33310 amount=31500 method=card"}
+{"ts": "2026-11-08T15:02:10+09:00", "customer": "C-246338", "device": "android", "event": "OTP_SEND", "code": "OK", "detail": "phone=010-0000-6290 ttl_s=180"}
+{"ts": "2026-11-08T15:06:40+09:00", "customer": "C-246338", "device": "android", "event": "OTP_VERIFY_FAIL", "code": "OTP_EXPIRED", "detail": "elapsed_s=270 ttl_s=180"}
+{"ts": "2026-11-08T15:07:02+09:00", "customer": "C-246338", "device": "android", "event": "OTP_SEND", "code": "OK", "detail": "phone=010-0000-6290 ttl_s=180"}
+{"ts": "2026-11-08T15:11:15+09:00", "customer": "C-246338", "device": "android", "event": "OTP_VERIFY_FAIL", "code": "OTP_EXPIRED", "detail": "elapsed_s=253 ttl_s=180"}
+{"ts": "2026-11-08T15:12:30+09:00", "customer": "C-246338", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=login"}
+{"ts": "2026-11-08T21:05:40+09:00", "customer": "C-283502", "device": "ios", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-08T21:08:12+09:00", "customer": "C-283502", "device": "ios", "event": "CART_ADD", "code": "OK", "detail": "item=I-58844 qty=2"}
+{"ts": "2026-11-08T21:10:05+09:00", "customer": "C-283502", "device": "ios", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-32788 point=3000 card=24000"}
+{"ts": "2026-11-08T21:10:06+09:00", "customer": "C-283502", "device": "ios", "event": "PAY_FAIL", "code": "POINT_HOLD_FAILED", "detail": "order=O-32788 point=3000 balance=3000"}
+{"ts": "2026-11-08T21:11:30+09:00", "customer": "C-283502", "device": "ios", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-32788 point=3000 card=24000"}
+{"ts": "2026-11-08T21:11:31+09:00", "customer": "C-283502", "device": "ios", "event": "PAY_FAIL", "code": "POINT_HOLD_FAILED", "detail": "order=O-32788 point=3000 balance=3000"}
+{"ts": "2026-11-08T21:13:02+09:00", "customer": "C-283502", "device": "ios", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-32788 point=0 card=27000"}
+{"ts": "2026-11-08T21:13:04+09:00", "customer": "C-283502", "device": "ios", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-32788 amount=27000 method=card"}
+{"ts": "2026-11-09T07:48:30+09:00", "customer": "C-268250", "device": "android", "event": "APP_UPDATE", "code": "OK", "detail": "from=5.1.4 to=5.2.0"}
+{"ts": "2026-11-09T07:50:02+09:00", "customer": "C-268250", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.2.0"}
+{"ts": "2026-11-09T07:51:15+09:00", "customer": "C-268250", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-09T07:51:40+09:00", "customer": "C-268250", "device": "android", "event": "SCREEN_LOAD_FAIL", "code": "JSON_PARSE_ERROR", "detail": "screen=order_list app_ver=5.2.0 field=delivery_eta"}
+{"ts": "2026-11-09T08:12:30+09:00", "customer": "C-233917", "device": "ios", "event": "SCREEN_LOAD_FAIL", "code": "JSON_PARSE_ERROR", "detail": "screen=order_list app_ver=5.2.0 field=delivery_eta"}
+{"ts": "2026-11-09T10:05:18+09:00", "customer": "C-283502", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=point_history"}
+{"ts": "2026-11-09T13:55:02+09:00", "customer": "C-266013", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password contact=010-0000-5527"}
+{"ts": "2026-11-09T15:30:11+09:00", "customer": "C-235590", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password email=jun.park@example.com"}
+{"ts": "2026-11-09T15:30:40+09:00", "customer": "C-235590", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=mypage"}
+{"ts": "2026-11-09T15:31:22+09:00", "customer": "C-235590", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-31066"}
+{"ts": "2026-11-09T15:33:05+09:00", "customer": "C-235590", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=settings"}
+{"ts": "2026-11-09T16:45:00+09:00", "customer": "C-291746", "device": "ios", "event": "SHIP_START", "code": "OK", "detail": "order=O-33310 courier=CR-03"}
+{"ts": "2026-11-09T18:55:02+09:00", "customer": "C-230871", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-09T18:58:40+09:00", "customer": "C-230871", "device": "android", "event": "CART_ADD", "code": "OK", "detail": "item=I-60231 qty=1"}
+{"ts": "2026-11-09T19:01:50+09:00", "customer": "C-252760", "device": "ios", "event": "PAY_APPROVED", "code": "OK", "detail": "order=O-33012 amount=45000 approval=A-77118"}
+{"ts": "2026-11-09T19:01:52+09:00", "customer": "C-252760", "device": "ios", "event": "ORDER_PLACE", "code": "OK", "detail": "order=O-33012 item=I-60188"}
+{"ts": "2026-11-09T19:02:10+09:00", "customer": "C-230871", "device": "android", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-33015 amount=89000 method=card"}
+{"ts": "2026-11-09T19:02:13+09:00", "customer": "C-230871", "device": "android", "event": "PAY_APPROVED", "code": "OK", "detail": "order=O-33015 amount=89000 approval=A-77120"}
+{"ts": "2026-11-09T19:02:14+09:00", "customer": "C-230871", "device": "android", "event": "ORDER_CREATE_FAIL", "code": "STOCK_SYNC_ERROR", "detail": "order=O-33015 item=I-60231 stock_api=timeout"}
+{"ts": "2026-11-09T19:02:15+09:00", "customer": "C-230871", "device": "android", "event": "AUTO_CANCEL_REQUEST", "code": "OK", "detail": "approval=A-77120 amount=89000"}
+{"ts": "2026-11-09T19:02:45+09:00", "customer": "C-230871", "device": "android", "event": "AUTO_CANCEL_FAIL", "code": "PG_CANCEL_TIMEOUT", "detail": "approval=A-77120 amount=89000 retry=0"}
+{"ts": "2026-11-09T19:03:20+09:00", "customer": "C-230871", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_list orders=0"}
+{"ts": "2026-11-09T20:15:30+09:00", "customer": "C-284419", "device": "android", "event": "ORDER_PLACE", "code": "OK", "detail": "order=O-33602 item=I-61177"}
+{"ts": "2026-11-09T20:15:35+09:00", "customer": "C-284419", "device": "android", "event": "PAY_PENDING", "code": "OK", "detail": "order=O-33602 amount=62000 method=bank_transfer"}
+{"ts": "2026-11-10T08:40:12+09:00", "customer": "C-259947", "device": "ios", "event": "APP_START", "code": "OK", "detail": "app_ver=5.2.0"}
+{"ts": "2026-11-10T08:40:40+09:00", "customer": "C-259947", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-31290"}
+{"ts": "2026-11-10T09:10:41+09:00", "customer": "C-230871", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-10T09:30:00+09:00", "customer": "C-284419", "device": "android", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-33602 amount=62000 method=bank_transfer"}
+{"ts": "2026-11-10T12:30:05+09:00", "customer": "C-268250", "device": "android", "event": "SCREEN_LOAD_FAIL", "code": "JSON_PARSE_ERROR", "detail": "screen=order_list app_ver=5.2.0 field=delivery_eta"}
+{"ts": "2026-11-10T13:40:12+09:00", "customer": "C-224470", "device": "android", "event": "APP_UPDATE", "code": "OK", "detail": "from=5.1.4 to=5.2.0"}
+{"ts": "2026-11-10T13:41:00+09:00", "customer": "C-224470", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-10T14:22:05+09:00", "customer": "C-291746", "device": "ios", "event": "DELIVERY_COMPLETE", "code": "OK", "detail": "order=O-33310 courier=CR-03"}
+{"ts": "2026-11-10T14:22:06+09:00", "customer": "C-291746", "device": "ios", "event": "DELIVERY_ANOMALY", "code": "LOCATION_MISMATCH", "detail": "order=O-33310 scan_distance_m=1840"}
+{"ts": "2026-11-10T14:22:10+09:00", "customer": "C-291746", "device": "ios", "event": "PUSH_SENT", "code": "OK", "detail": "type=delivered order=O-33310"}
+{"ts": "2026-11-10T15:40:02+09:00", "customer": "C-246338", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.1.4"}
+{"ts": "2026-11-10T19:05:33+09:00", "customer": "C-291746", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-33310"}
+{"ts": "2026-11-11T08:15:02+09:00", "customer": "C-291746", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_detail order=O-33310"}
+{"ts": "2026-11-11T10:22:31+09:00", "customer": "C-256612", "device": "ios", "event": "LOGOUT", "code": "OK", "detail": "session_min=12"}
+{"ts": "2026-11-11T13:05:20+09:00", "customer": "C-207362", "device": "android", "event": "PASSWORD_CHANGE", "code": "OK", "detail": "channel=pc_web"}
+{"ts": "2026-11-11T14:01:50+09:00", "customer": "C-284419", "device": "android", "event": "REFUND_ACCOUNT_SET", "code": "OK", "detail": "bank=B-04 account=***-***-4821"}
+{"ts": "2026-11-11T14:02:15+09:00", "customer": "C-284419", "device": "android", "event": "ORDER_CANCEL_REQUEST", "code": "OK", "detail": "order=O-33602"}
+{"ts": "2026-11-11T14:02:16+09:00", "customer": "C-284419", "device": "android", "event": "ORDER_CANCEL", "code": "OK", "detail": "order=O-33602"}
+{"ts": "2026-11-11T14:02:20+09:00", "customer": "C-284419", "device": "android", "event": "REFUND_REQUEST", "code": "OK", "detail": "order=O-33602 amount=62000 method=bank_transfer"}
+{"ts": "2026-11-11T14:05:41+09:00", "customer": "C-284419", "device": "android", "event": "REFUND_FAIL", "code": "ACCOUNT_HOLDER_MISMATCH", "detail": "order=O-33602 amount=62000 bank=B-04"}
+{"ts": "2026-11-11T18:58:44+09:00", "customer": "C-268250", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-11T20:38:10+09:00", "customer": "C-207362", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.2.0"}
+{"ts": "2026-11-11T20:38:31+09:00", "customer": "C-207362", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=cart cart_items=3"}
+{"ts": "2026-11-11T20:40:05+09:00", "customer": "C-207362", "device": "android", "event": "CHECKOUT_START", "code": "OK", "detail": "cart_items=3 amount=57400"}
+{"ts": "2026-11-11T20:40:06+09:00", "customer": "C-207362", "device": "android", "event": "AUTH_CHECK_FAIL", "code": "SESSION_TOKEN_INVALID", "detail": "reason=token_revoked_after_password_change"}
+{"ts": "2026-11-11T20:40:07+09:00", "customer": "C-207362", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home redirect=auth_required"}
+{"ts": "2026-11-11T20:40:30+09:00", "customer": "C-207326", "device": "ios", "event": "PAY_FAIL", "code": "CARD_DECLINED_BY_ISSUER", "detail": "order=O-33780 amount=21000"}
+{"ts": "2026-11-11T20:41:20+09:00", "customer": "C-207362", "device": "android", "event": "CHECKOUT_START", "code": "OK", "detail": "cart_items=3 amount=57400"}
+{"ts": "2026-11-11T20:41:21+09:00", "customer": "C-207362", "device": "android", "event": "AUTH_CHECK_FAIL", "code": "SESSION_TOKEN_INVALID", "detail": "reason=token_revoked_after_password_change"}
+{"ts": "2026-11-11T20:41:22+09:00", "customer": "C-207362", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home redirect=auth_required"}
+{"ts": "2026-11-12T09:05:55+09:00", "customer": "C-298031", "device": "android", "event": "SEARCH", "code": "OK", "detail": "query=전기장판 took_ms=330 results=57"}
+{"ts": "2026-11-12T15:30:10+09:00", "customer": "C-284419", "device": "android", "event": "APP_START", "code": "OK", "detail": "app_ver=5.2.0"}

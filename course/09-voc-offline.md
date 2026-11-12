@@ -91,11 +91,27 @@ sh setup/offline-check.sh --sandbox  # Wi-Fi 를 둔 채 밖으로 나가는 연
 | 묶음 크기·묶기 시간 | 5.13GB · 9초 | |
 | gzip 압축 시 | 4.40GB (14% 줄어듦) · 226초 | |
 | blob 지문 일치 | 738/738 | |
-| 분류 | 6/6 | |
-| 발생 시각 | 3/4 ("이번 주 월요일" 틀림) | |
-| 원인 확인 여부 | 4/4 | |
+| 분류 (고칠 때 본 6건 / 새 20건) | 6/6 / 17/20 | |
+| 발생 시각 (6건 / 20건) | 3/4 / 7/15 | |
+| 원인 확인 여부 (6건 / 20건) | 4/4 / 18/18 | |
 | 지어낸 코드 · 개인정보 노출 | 0 · 0 | |
 | 메일 발송 → 받음 | 6 → 6 | |
+
+### 처음 보는 데이터로 한 번 더
+
+고치면서 본 티켓으로 잰 점수는 부풀려져요(과적합). 다 고쳤으면 **새 AI 대화창**(지금까지 대화를 모르는 쪽)에게 같은 형식으로 새 티켓 20건을 만들게 하고, 코드는 그대로 둔 채 **한 번만** 재요.
+
+```text
+samples/voc-holdout/ 에 가상 VOC 평가 데이터 20건을 만들어줘. step9_voc.py 와 samples/voc/ 는 읽지 마.
+형식은 tickets.json(Jira 응답 모양)·logs.jsonl·expected.json(category·occurred_at 또는 occurred_date·key_codes·cause·no_customer).
+보통 11건, 로그는 있지만 원인 기록이 없는 4건, 회원번호 없는 2건, 함정 3건(같은 시각 다른 고객 오류, 원인이 여러 줄, 고객 주장과 실제 원인이 다름)
+```
+
+```sh
+python3 step9_voc.py samples/voc-holdout/tickets.json samples/voc-holdout/logs.jsonl results/step9-holdout --expected samples/voc-holdout/expected.json
+```
+
+- 1회차: 발생 시각이 6건 3/4 → 새 20건 7/15 로 떨어졌어요. 원인 판단은 18/18 로 유지
 
 ## 코드에서 꼭 읽을 곳
 
