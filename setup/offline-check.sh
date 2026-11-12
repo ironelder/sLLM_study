@@ -4,7 +4,8 @@
 # 사용: Wi-Fi 끄고 sh setup/offline-check.sh · Wi-Fi 둔 채 밖만 막기: --sandbox
 set -u
 cd "$(dirname "$0")/.."
-BIN="$HOME/.local/opt/ollama-v0.40.16/ollama"
+BIN=$(ls -d "$HOME"/.local/opt/ollama-v*/ollama 2>/dev/null | tail -1)
+[ -x "$BIN" ] || { echo "Ollama 실행 파일이 없어요 (~/.local/opt/ollama-v*/ollama) — 0단계 설치 먼저"; exit 1; }
 MODELS="$PWD/private/offline/models"
 OUT="results/step9-offline-$(date +%Y%m%d-%H%M%S)"
 RUN=""
@@ -17,7 +18,7 @@ mkdir -p "$OUT"
 
 restore() {
   pkill -f 'mail_sink.py --port 2525'
-  pkill -f 'ollama-v0.40.16/ollama serve'
+  pkill -f 'opt/ollama-v[0-9.]*/ollama serve'
   sleep 2
   OLLAMA_HOST=127.0.0.1:11434 OLLAMA_NO_CLOUD=1 nohup "$BIN" serve > "$HOME/.ollama/serve.log" 2>&1 &
   wait_ready && echo "정리: 메일 받는 쪽·오프라인 서버 끄고 원래 서버(~/.ollama/models) 다시 켬"
@@ -40,7 +41,7 @@ main() {
 
   [ -d "$MODELS/manifests" ] || { echo "옮긴 모델 폴더가 없어요 — python3 setup/move_models.py unpack 먼저"; exit 1; }
   touch "$OUT/.server-swapped"
-  pkill -f 'ollama-v0.40.16/ollama serve'
+  pkill -f 'opt/ollama-v[0-9.]*/ollama serve'
   sleep 2
   OLLAMA_MODELS="$MODELS" OLLAMA_HOST=127.0.0.1:11434 OLLAMA_NO_CLOUD=1 $RUN "$BIN" serve > "$OUT/serve.log" 2>&1 &
   wait_ready || { echo "오프라인 서버가 30초 안에 안 켜졌어요 — $OUT/serve.log 확인"; exit 1; }
