@@ -1,0 +1,31 @@
+{"ts": "2026-11-09T20:58:40+09:00", "customer": "C-100231", "device": "android", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-09T21:02:10+09:00", "customer": "C-100231", "device": "android", "event": "ORDER_CREATE", "code": "OK", "detail": "order=O-5501 items=2"}
+{"ts": "2026-11-09T21:02:41+09:00", "customer": "C-100231", "device": "android", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-5501 amount=38900 method=card phone=010-0000-1111"}
+{"ts": "2026-11-09T21:03:05+09:00", "customer": "C-100299", "device": "ios", "event": "PAY_FAIL", "code": "CARD_LIMIT", "detail": "order=O-5502 amount=120000"}
+{"ts": "2026-11-09T21:03:11+09:00", "customer": "C-100231", "device": "android", "event": "PAY_FAIL", "code": "PG_TIMEOUT", "detail": "order=O-5501 wait_ms=30000"}
+{"ts": "2026-11-09T21:05:02+09:00", "customer": "C-100231", "device": "android", "event": "PAY_REQUEST", "code": "OK", "detail": "order=O-5501 amount=38900 method=card"}
+{"ts": "2026-11-09T21:05:32+09:00", "customer": "C-100231", "device": "android", "event": "PAY_FAIL", "code": "PG_TIMEOUT", "detail": "order=O-5501 wait_ms=30000"}
+{"ts": "2026-11-09T21:06:00+09:00", "customer": "C-100231", "device": "android", "event": "APP_BACKGROUND", "code": "OK", "detail": ""}
+{"ts": "2026-11-09T08:10:12+09:00", "customer": "C-100452", "device": "ios", "event": "APP_UPDATE", "code": "OK", "detail": "from=5.1.2 to=5.2.0"}
+{"ts": "2026-11-09T08:11:30+09:00", "customer": "C-100452", "device": "ios", "event": "LOGIN", "code": "OK", "detail": "method=password email=kim.minsu@example.com"}
+{"ts": "2026-11-09T12:31:44+09:00", "customer": "C-100452", "device": "ios", "event": "AUTH_REFRESH", "code": "TOKEN_SIGNATURE_INVALID", "detail": "app=5.2.0"}
+{"ts": "2026-11-09T12:31:45+09:00", "customer": "C-100452", "device": "ios", "event": "LOGOUT", "code": "FORCED", "detail": "reason=refresh_failed"}
+{"ts": "2026-11-10T09:15:03+09:00", "customer": "C-100452", "device": "ios", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-10T13:02:19+09:00", "customer": "C-100452", "device": "ios", "event": "AUTH_REFRESH", "code": "TOKEN_SIGNATURE_INVALID", "detail": "app=5.2.0"}
+{"ts": "2026-11-10T13:02:20+09:00", "customer": "C-100452", "device": "ios", "event": "LOGOUT", "code": "FORCED", "detail": "reason=refresh_failed"}
+{"ts": "2026-11-11T10:44:51+09:00", "customer": "C-100452", "device": "ios", "event": "AUTH_REFRESH", "code": "TOKEN_SIGNATURE_INVALID", "detail": "app=5.2.0"}
+{"ts": "2026-11-11T10:44:52+09:00", "customer": "C-100452", "device": "ios", "event": "LOGOUT", "code": "FORCED", "detail": "reason=refresh_failed"}
+{"ts": "2026-11-10T19:20:00+09:00", "customer": "C-100533", "device": "android", "event": "AUTH_REFRESH", "code": "OK", "detail": "app=5.2.0"}
+{"ts": "2026-11-12T08:02:11+09:00", "customer": "C-100517", "device": "android", "event": "APP_START", "code": "OK", "detail": "free_mb=310"}
+{"ts": "2026-11-12T09:20:05+09:00", "customer": "C-100517", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=item_detail item=I-778"}
+{"ts": "2026-11-12T09:20:07+09:00", "customer": "C-100517", "device": "android", "event": "APP_CRASH", "code": "OUT_OF_MEMORY", "detail": "screen=item_detail image_px=8000x8000"}
+{"ts": "2026-11-12T09:41:30+09:00", "customer": "C-100517", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=item_detail item=I-778"}
+{"ts": "2026-11-12T09:41:32+09:00", "customer": "C-100517", "device": "android", "event": "APP_CRASH", "code": "OUT_OF_MEMORY", "detail": "screen=item_detail image_px=8000x8000"}
+{"ts": "2026-11-12T10:03:00+09:00", "customer": "C-100517", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-08T19:10:22+09:00", "customer": "C-100602", "device": "android", "event": "PAY_SUCCESS", "code": "OK", "detail": "order=O-5480 amount=52000 method=card"}
+{"ts": "2026-11-10T10:02:14+09:00", "customer": "C-100602", "device": "android", "event": "ORDER_CANCEL", "code": "OK", "detail": "order=O-5480"}
+{"ts": "2026-11-10T10:02:15+09:00", "customer": "C-100602", "device": "android", "event": "REFUND_REQUEST", "code": "ACCEPTED", "detail": "order=O-5480 amount=52000 method=card"}
+{"ts": "2026-11-12T13:55:40+09:00", "customer": "C-100602", "device": "android", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=order_history"}
+{"ts": "2026-11-11T20:01:00+09:00", "customer": "C-100777", "device": "ios", "event": "LOGIN", "code": "OK", "detail": "method=password"}
+{"ts": "2026-11-11T20:01:30+09:00", "customer": "C-100777", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=home"}
+{"ts": "2026-11-11T20:03:10+09:00", "customer": "C-100777", "device": "ios", "event": "SCREEN_OPEN", "code": "OK", "detail": "screen=point_history"}

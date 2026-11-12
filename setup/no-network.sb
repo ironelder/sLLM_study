@@ -1,0 +1,6 @@
+(version 1)
+; 이 기기 안(localhost·unix 소켓)만 허용하고 밖으로 나가는 연결은 모두 막는 macOS 샌드박스 프로필
+(allow default)
+(deny network-outbound)
+(allow network-outbound (remote ip "localhost:*"))
+(allow network-outbound (remote unix-socket))

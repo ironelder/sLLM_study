@@ -33,6 +33,7 @@
 | 6 | 조각 + 출처 번호로 sLLM 답 생성, "없으면 모른다" 지시, 답 채점 | 지어내는 비율 |
 | 7 | 조각에 프로젝트 이름표, "다른 프로젝트 자료는 쓰지 마" 지시 | 위험한 답·잃은 정답 |
 | 8 | 같은 비교를 9B 모델로 | 위험한 답, 속도, 메모리 |
+| 9 | 분리망 가정: 모델을 묶어 옮기고 인터넷 없이 띄우기 + 가상 VOC 티켓 해석 → 고객 로그 조회 → 개인정보 가림 → 요약 → 메일 | 원인 판단, 개인정보 노출, 인터넷 없이 동작 |
 
 단계별 정리 = `notes/`.
 
@@ -48,6 +49,7 @@
 | 6 찾기+답하기 | 22문항: 찾기 성공·답함 15, 안전한 거절 4, 위험 3 | 가장 위험 = 비슷하지만 다른 대상의 조각으로 자신 있게 틀림 |
 | 7 조각에 프로젝트 이름표 | 위험한 답 2 → 이름표만 3 → 이름표+확인 지시 1, 잃은 정답 0 → 1 | 이름표는 찾기를 끌어오지만, 답에 효과를 내려면 '이름표로 걸러라' 지시가 필요 |
 | 8 4B vs 9B | 위험한 답 4B 2 → 9B 0, 문항당 7초 → 27초 | 큰 모델은 이름표 없이도 다른 대상을 알아챔. 대신 느리고 16GB 에서 메모리 빠듯, 문서 없이는 더 그럴듯하게 지어냄 |
+| 9 분리망 가정 VOC (11-12) | 모델 5.13GB tar 이동·blob 지문 738/738, 가상 티켓 6건 분류 6/6·원인 판단 4/4·개인정보 노출 0, 외부 차단 상태 메일 6통 | 식별자·조회·가림·검증은 코드, 해석·요약은 모델. 판단은 JSON 칸으로 받고 "요약 먼저, 판단 나중" 순서가 정확. 4B 는 "이번 주 월요일" 같은 날짜 계산이 약함 |
 
 ## 실행
 
@@ -59,6 +61,9 @@
 - 섞어 찾기 채점: `python3 step5_hybrid.py <시험지.json> <결과.json> --keyword-cmd "<BM25 검색 명령 --json>" [--rrf-k 60] [--kw-weight 1.0]`
 - 실행 결과 비교: `python3 compare_runs.py 이름=결과.json [이름=결과.json …] [--no-answer-ids N1]` — 같은 거절 판정으로 다시 세고 칸이 다른 문항을 나란히
 - 찾기+답하기: `python3 step6_rag.py <결과.json> <시험지.json> [<시험지.json> …] [--model qwen3.5:4b] [-k 5] [--index <색인>] [--check-project]`
+- 모델 옮기기: `python3 setup/move_models.py pack <묶음.tar> qwen3.5:4b bge-m3` → `python3 setup/move_models.py unpack <묶음.tar> <풀 폴더>` (지문 대조)
+- VOC 흐름: `python3 step9_voc.py samples/voc/tickets.json samples/voc/logs.jsonl <출력 폴더> [--expected samples/voc/expected.json] [--smtp 127.0.0.1:2525]` — 시험용 메일 받는 쪽 `python3 mail_sink.py --port 2525`
+- 인터넷 없이 전체 확인: Wi-Fi 끄고 `sh setup/offline-check.sh` (또는 `--sandbox` 로 밖으로 나가는 연결만 차단). 옮긴 모델 폴더 = `private/offline/models`
 
 ## Ollama 다루기
 

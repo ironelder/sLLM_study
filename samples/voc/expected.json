@@ -1,0 +1,8 @@
+{
+  "VOC-101": {"category": ["결제"], "occurred_at": "2026-11-09 21:00", "key_codes": ["PG_TIMEOUT"], "cause": true},
+  "VOC-102": {"category": ["로그인"], "occurred_date": "2026-11-09", "key_codes": ["TOKEN_SIGNATURE_INVALID"], "cause": true},
+  "VOC-103": {"category": ["앱 오류"], "occurred_date": "2026-11-12", "key_codes": ["OUT_OF_MEMORY"], "cause": true},
+  "VOC-104": {"category": ["환불·취소"], "occurred_date": "2026-11-08", "key_codes": ["REFUND_REQUEST"]},
+  "VOC-105": {"category": ["앱 오류", "기타"], "no_customer": true},
+  "VOC-106": {"category": ["결제", "환불·취소", "기타"], "cause": false}
+}
